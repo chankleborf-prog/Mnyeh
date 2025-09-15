@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // HELLO IT TAKE TOO LONG TO UPDATE </3
     const API_BASE = "https://mnyah.onrender.com"; // Backend hosted on Render
 
     const fetchBtn = document.getElementById("fetch-playlist-btn");
