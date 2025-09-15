@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE = "https://mnyah.onrender.com"; // Backend hosted on Render
+
     const fetchBtn = document.getElementById("fetch-playlist-btn");
     const playlistUrlInput = document.getElementById("playlist-url");
     const playlistSection = document.getElementById("playlist-section");
@@ -29,13 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!url) return alert("Please enter a playlist link");
 
         try {
-            const res = await fetch(`/get_playlist?url=${encodeURIComponent(url)}`);
+            const res = await fetch(`${API_BASE}/get_playlist?url=${encodeURIComponent(url)}`);
             if (!res.ok) throw new Error("Failed to load playlist, make sure the link is valid, and the playlist is public.");
 
             const data = await res.json();
             songs = data.songs;
 
-            playlistCover.src = data.cover || "/static/images/default-cover.png";
+            playlistCover.src = data.cover || "static/images/default-cover.png";
             playlistTitle.textContent = data.title || "Unknown Playlist";
             playlistCreator.textContent = data.creator || "Unknown Creator";
 
@@ -98,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     artist: song.artist || '', 
                     isrc: song.isrc || '' 
                 });
-                const response = await fetch(`/download_song?${params}`);
+                const response = await fetch(`${API_BASE}/download_song?${params}`);
 
                 if (response.ok) {
                     detailedProgress.textContent = "✅ Download complete!";
@@ -121,10 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         progressText.textContent = "All downloads complete! Creating ZIP...";
         detailedProgress.textContent = "📦 Packaging files into ZIP archive...";
-        window.location.href = "/download_all";
+        window.location.href = `${API_BASE}/download_all`;
     });
 
-    // Single Song Download {not implemented}
+    // Single Song Download
     songList.addEventListener("click", async (e) => {
         if (e.target.classList.contains("song-download-btn")) {
             const index = e.target.dataset.index;
@@ -136,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     artist: song.artist || '', 
                     isrc: song.isrc || '' 
                 });
-                const res = await fetch(`/download_song?${params}`);
+                const res = await fetch(`${API_BASE}/download_song?${params}`);
                 e.target.textContent = res.ok ? "Downloaded" : "Error";
             } catch (err) {
                 e.target.textContent = "Error";
