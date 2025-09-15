@@ -1,0 +1,185 @@
+body {
+    background-color: #0d0d0d;
+    color: #e5e5e5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-container {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.fade-container.visible {
+    opacity: 1;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #111;
+    border-bottom: 2px solid #1db954;
+}
+.top-bar input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+    outline: none;
+    font-size: 14px;
+}
+.top-bar button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #1db954;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+.top-bar button:hover {
+    background-color: #18a74a;
+}
+
+#playlist-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.playlist-info img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(29, 185, 84, 0.5);
+}
+.playlist-text {
+    margin-top: 10px;
+}
+
+#download-area {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically in its row */
+    flex-direction: column;   /* Stack button/progress vertically */
+    margin-top: 20px;
+    width: 100%;
+}
+
+#progress-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+}
+
+.progress-bar-container {
+    width: 300px; /* Fixed width */
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-left: auto;   /* center horizontally */
+    margin-right: auto;  /* center horizontally */
+}
+
+
+#download-all-btn {
+    padding: 12px 25px;
+    border-radius: 25px;
+    background-color: #1db954;
+    color: black;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+#download-all-btn:hover {
+    background-color: #18a74a;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #1db954;
+    transition: width 0.3s ease-in-out;
+}
+#progress-text {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.detailed-status {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-style: italic;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+.song-item {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.song-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.song-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+.song-title {
+    flex: 1;
+    font-size: 14px;
+    color: #fff;
+}
+.song-download-btn {
+    background-color: #1db954;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.song-download-btn:hover {
+    background-color: #18a74a;
+}
